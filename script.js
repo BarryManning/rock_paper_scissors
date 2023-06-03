@@ -1,5 +1,5 @@
 //rock paper scissors
-//create a push to play button        (do this later)
+//create a push to play button
 //create an array of possible choices
 //create a function that takes the players choice and converts it to all lowercase
 //create a function that randomly chooses the computers choice
@@ -46,23 +46,26 @@ function startGame() {
         }
 
     //compare choices and update score
-        if (playerChoice == 'rock' && compChoice == 'paper') {
+        if (playerChoice === 'rock' && compChoice === 'paper') {
             console.log('You have been defeated.');
             updateCompPoint();
-        } else if (playerChoice == 'paper' && compChoice == 'rock') {
+        } else if (playerChoice === 'paper' && compChoice === 'rock') {
             console.log('Congratulations, you win!');
             updatePlayerPoint();
-        } else if (playerChoice == 'paper' && compChoice == 'scissors') {
+        } else if (playerChoice === 'paper' && compChoice === 'scissors') {
             console.log('You have been defeated.');
             updateCompPoint();
-        } else if (playerChoice == 'scissors' && compChoice == 'paper') {
+        } else if (playerChoice === 'scissors' && compChoice === 'paper') {
             console.log('Congratulations, you win!');
             updatePlayerPoint();
-        } else if (playerChoice == 'scissors' && compChoice == 'rock') {
+        } else if (playerChoice === 'scissors' && compChoice === 'rock') {
             console.log('You have been defeated.');
             updateCompPoint();
+        } else if (playerChoice === 'rock' && compChoice === 'scissors') {
+            console.log('Congratulations, you win!');
+            updatePlayerPoint();
         } else {
-            console.log("It's a tie!");
+            console.log('Tie!');
         }
     }
 

@@ -22,17 +22,12 @@ function startGame() {
         }
 
     //player choice
-        let playerChoice = convertToLower(prompt('Please choose your tool'));
+        let playerChoice = '';
         console.log('Player chooses ' + (playerChoice));
 
     //generate computer choice
         let compChoice = (generateRandom(possibleChoices));
         console.log('Computer chooses ' + (compChoice));
-
-    //convert to lowercase
-        function convertToLower(choice) {
-            return choice.toLowerCase();
-        }
 
     //update winner score
         function updatePlayerPoint() {

@@ -5,7 +5,7 @@ function generateRandom(choices) {
 }
 
 //tool choices
-const possibleChoices = [rock, paper, scissors];
+const possibleChoices = ['rock', 'paper', 'scissors'];
 
 //game start
 //start game is run
@@ -21,11 +21,22 @@ function startGame() {
     const paper = document.getElementById("paper");
     const scissors = document.getElementById("scissors");
 
+//add onclick events to each button that set playerchoic and start round 
+    rock.addEventListener('click', function(){
+        playerChoice = 'rock';
+        playRound();
+    })
+    paper.addEventListener('click', function(){
+        playerChoice = 'paper';
+        playRound();
+    })
+    scissors.addEventListener('click', function(){
+        playerChoice = 'scissors';
+        playRound();
+    })
+
 //start of round
     function playRound() {
-
-    //player choice
-        let playerChoice = '';
 
     //generate computer choice
         let compChoice = (generateRandom(possibleChoices));
@@ -51,31 +62,27 @@ function startGame() {
         }
 
     //compare choices and update score
-        if (playerChoice === rock && compChoice === paper) {
+        if (playerChoice === 'rock' && compChoice === 'paper') {
             console.log('You have been defeated.');
             updateCompPoint();
-        } else if (playerChoice === paper && compChoice === rock) {
+        } else if (playerChoice === 'paper' && compChoice === 'rock') {
             console.log('Congratulations, you win!');
             updatePlayerPoint();
-        } else if (playerChoice === paper && compChoice === scissors) {
+        } else if (playerChoice === 'paper' && compChoice === 'scissors') {
             console.log('You have been defeated.');
             updateCompPoint();
-        } else if (playerChoice === scissors && compChoice === paper) {
+        } else if (playerChoice === 'scissors' && compChoice === 'paper') {
             console.log('Congratulations, you win!');
             updatePlayerPoint();
-        } else if (playerChoice === scissors && compChoice === rock) {
+        } else if (playerChoice === 'scissors' && compChoice === 'rock') {
             console.log('You have been defeated.');
             updateCompPoint();
-        } else if (playerChoice === rock && compChoice === scissors) {
+        } else if (playerChoice === 'rock' && compChoice === 'scissors') {
             console.log('Congratulations, you win!');
             updatePlayerPoint();
         } else {
             console.log('Tie!');
         }
-    }
-    
-    for (let i = 0; i < 3; i++) {
-        playRound();
     }
 }
 

@@ -25,14 +25,16 @@ h1 {
 }
 
 #container > div {
+    border: solid white 3px;
     border-radius: 15px;
     background-color: white;
     margin: 30px;
     font-size: 100px;
 }
 
-.buttons:hover {
+#rock:hover, #paper:hover, #scissors:hover {
     transform: scale(1.1,1.1);
+    border-color: rgb(210, 192, 0);
 }
 
 #score {

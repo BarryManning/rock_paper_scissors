@@ -21,7 +21,7 @@ function startGame() {
     const paper = document.getElementById("paper");
     const scissors = document.getElementById("scissors");
 
-//add onclick events to each button that set playerchoic and start round 
+//add onclick events to each button that set playerchoice and start round 
     rock.addEventListener('click', function(){
         playerChoice = 'rock';
         playRound();
@@ -35,31 +35,33 @@ function startGame() {
         playRound();
     })
 
+//update winner score
+    function updatePlayerPoint() {
+        playerScore++;
+        console.log(playerScore);
+    }
+
+    function updateCompPoint() {
+        compScore++;
+        console.log(compScore);
+    }
+
+//player score
+     let playerScore = 0;
+     let playerScoreUI = document.getElementById("playerScore");
+     playerScoreUI.innerText = "Player Score:" + " " + playerScore.toString();
+ 
+ //comp score
+     let compScore = 0;
+     let compScoreUI = document.getElementById('compScore');
+     compScoreUI.innerText = "Computer Score:" + " " + compScore.toString();
+
 //start of round
     function playRound() {
 
     //generate computer choice
         let compChoice = (generateRandom(possibleChoices));
         console.log('Computer chooses ' + (compChoice));
-
-    //player score
-        let playerScore = 0;
-        let playerScoreUI = document.getElementById("playerScore");
-        playerScoreUI.innerText = "Player Score:" + " " + playerScore;
-    
-    //comp score
-        let compScore = 0;
-        let compScoreUI = document.getElementById('compScore');
-        compScoreUI.innerText = "Computer Score:" + " " + compScore;
-
-    //update winner score
-        function updatePlayerPoint() {
-            playerScore++;
-        }
-
-        function updateCompPoint() {
-            compScore++;
-        }
 
     //compare choices and update score
         if (playerChoice === 'rock' && compChoice === 'paper') {

@@ -1,5 +1,5 @@
 
-//random choice generator
+//random choice generator for comp choice
 function generateRandom(choices) {
     return choices[Math.floor((Math.random()*choices.length))];
 }
@@ -8,7 +8,6 @@ function generateRandom(choices) {
 const possibleChoices = ['rock', 'paper', 'scissors'];
 
 //game start
-//start game is run
 //player selects choice
 //choice updates player choice and starts round
 function startGame() {
@@ -38,23 +37,23 @@ function startGame() {
 //update winner score
     function updatePlayerPoint() {
         playerScore++;
+        playerScoreUI.innerText = "Player Score:" + " " + playerScore.toString();
         console.log(playerScore);
     }
 
     function updateCompPoint() {
         compScore++;
+        compScoreUI.innerText = "Computer Score:" + " " + compScore.toString();
         console.log(compScore);
     }
 
 //player score
      let playerScore = 0;
      let playerScoreUI = document.getElementById("playerScore");
-     playerScoreUI.innerText = "Player Score:" + " " + playerScore.toString();
  
  //comp score
      let compScore = 0;
      let compScoreUI = document.getElementById('compScore');
-     compScoreUI.innerText = "Computer Score:" + " " + compScore.toString();
 
 //start of round
     function playRound() {
@@ -87,5 +86,3 @@ function startGame() {
         }
     }
 }
-
-startGame();

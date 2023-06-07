@@ -7,7 +7,6 @@ function generateRandom(choices) {
 //tool choices
 const possibleChoices = ['rock', 'paper', 'scissors'];
 
-//game start
 //player selects choice
 //choice updates player choice and starts round
 function startGame() {
@@ -86,3 +85,10 @@ function startGame() {
         }
     }
 }
+
+//start button selector
+const startButton = document.getElementById('startButton');
+startButton.addEventListener('click', function(){
+    startButton.style.display = 'none';
+    startGame();
+});

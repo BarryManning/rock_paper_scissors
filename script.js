@@ -7,6 +7,9 @@ function generateRandom(choices) {
 //tool choices
 const possibleChoices = ['rock', 'paper', 'scissors'];
 
+//message display
+let updateMessage = document.getElementById("updateMessage");
+
 //player selects choice
 //choice updates player choice and starts round
 function startGame() {
@@ -16,8 +19,11 @@ function startGame() {
 
 //button id variables
     const rock = document.getElementById("rock");
+    rock.innerHTML = '✊🏻';
     const paper = document.getElementById("paper");
+    paper.innerHTML = '🖐🏻';
     const scissors = document.getElementById("scissors");
+    scissors.innerHTML = '✌🏻';
 
 //add onclick events to each button that set playerchoice and start round 
     rock.addEventListener('click', function(){
@@ -33,19 +39,6 @@ function startGame() {
         playRound();
     })
 
-//update winner score
-    function updatePlayerPoint() {
-        playerScore++;
-        playerScoreUI.innerText = "Player Score:" + " " + playerScore.toString();
-        console.log(playerScore);
-    }
-
-    function updateCompPoint() {
-        compScore++;
-        compScoreUI.innerText = "Computer Score:" + " " + compScore.toString();
-        console.log(compScore);
-    }
-
 //player score
      let playerScore = 0;
      let playerScoreUI = document.getElementById("playerScore");
@@ -59,29 +52,35 @@ function startGame() {
 
     //generate computer choice
         let compChoice = (generateRandom(possibleChoices));
-        console.log('Computer chooses ' + (compChoice));
+
+    //update winner score
+    function updatePlayerPoint() {
+        playerScore++;
+        playerScoreUI.innerHTML = "Player score:" + " " + playerScore.toString();
+        updateMessage.innerHTML = 'Player picked: ' + playerChoice + ' ' + '<br>' + 'Computer picked: ' + compChoice + '<br>' + 'Player wins the round!';
+    }
+
+    function updateCompPoint() {
+        compScore++;
+        compScoreUI.innerHTML = "Computer score:" + " " + compScore.toString();
+        updateMessage.innerHTML = 'Player picked: ' + playerChoice + ' ' + '<br>' + 'Computer picked: ' + compChoice + '<br>' + 'Computer wins the round';
+    }
 
     //compare choices and update score
         if (playerChoice === 'rock' && compChoice === 'paper') {
-            console.log('You have been defeated.');
             updateCompPoint();
         } else if (playerChoice === 'paper' && compChoice === 'rock') {
-            console.log('Congratulations, you win!');
             updatePlayerPoint();
         } else if (playerChoice === 'paper' && compChoice === 'scissors') {
-            console.log('You have been defeated.');
             updateCompPoint();
         } else if (playerChoice === 'scissors' && compChoice === 'paper') {
-            console.log('Congratulations, you win!');
             updatePlayerPoint();
         } else if (playerChoice === 'scissors' && compChoice === 'rock') {
-            console.log('You have been defeated.');
             updateCompPoint();
         } else if (playerChoice === 'rock' && compChoice === 'scissors') {
-            console.log('Congratulations, you win!');
             updatePlayerPoint();
         } else {
-            console.log('Tie!');
+            updateMessage.innerHTML = 'Player picked: ' + playerChoice + '<br>' + 'Computer picked: ' + compChoice + '<br>' + "It's a tie!";
         }
     }
 }
@@ -92,3 +91,12 @@ startButton.addEventListener('click', function(){
     startButton.style.display = 'none';
     startGame();
 });
+
+//on win function
+function onWin() {
+    if (playerScore === 5) {
+        updateMessage.innerText = 'You won!'
+    } else if (compScore === 5) {
+        updateMessage.innterText = 'You lost.'
+    }
+}

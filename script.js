@@ -10,8 +10,7 @@ const possibleChoices = ['rock', 'paper', 'scissors'];
 //message display
 let updateMessage = document.getElementById("updateMessage");
 
-//player selects choice
-//choice updates player choice and starts round
+//game start function
 function startGame() {
 
 //player choice set to default
@@ -24,6 +23,19 @@ function startGame() {
     paper.innerHTML = '🖐🏻';
     const scissors = document.getElementById("scissors");
     scissors.innerHTML = '✌🏻';
+
+    //end game on win function
+    function onEnd() {
+        rock.style.display = 'none';
+        paper.style.display = 'none';
+        scissors.style.display = 'none';
+        updateMessage.style.fontSize = '50px'
+        startButton.addEventListener('click', function(){
+            location.reload()
+        });
+        startButton.innerText = 'PLAY AGAIN';
+        startButton.style.display = 'flex';
+    }
 
 //add onclick events to each button that set playerchoice and start round 
     rock.addEventListener('click', function(){
@@ -82,6 +94,14 @@ function startGame() {
         } else {
             updateMessage.innerHTML = 'Player picked: ' + playerChoice + '<br>' + 'Computer picked: ' + compChoice + '<br>' + "It's a tie!";
         }
+
+        if (compScore === 3) {
+            updateMessage.innerHTML = 'You lost.'
+            onEnd();
+        } else if (playerScore === 3) {
+            updateMessage.innerHTML = 'You win!'
+            onEnd();
+        }
     }
 }
 
@@ -91,12 +111,3 @@ startButton.addEventListener('click', function(){
     startButton.style.display = 'none';
     startGame();
 });
-
-//on win function
-function onWin() {
-    if (playerScore === 5) {
-        updateMessage.innerText = 'You won!'
-    } else if (compScore === 5) {
-        updateMessage.innterText = 'You lost.'
-    }
-}
